@@ -15,7 +15,9 @@ let uid = 0
 
 export function initMixin(Vue: typeof Component) {
   Vue.prototype._init = function (options?: Record<string, any>) {
+    console.log('Vue.prototype._init')
     const vm: Component = this
+    console.log(Object.keys(vm))
     // a uid
     vm._uid = uid++
 
@@ -38,6 +40,7 @@ export function initMixin(Vue: typeof Component) {
     // render of a parent component
     vm._scope.parent = undefined
     vm._scope._vm = true
+    console.log(Object.keys(vm))
     // merge options
     if (options && options._isComponent) {
       // optimize internal component instantiation
@@ -50,10 +53,12 @@ export function initMixin(Vue: typeof Component) {
         options || {},
         vm
       )
+      console.log(Object.keys(vm))
     }
     /* istanbul ignore else */
     if (__DEV__) {
       initProxy(vm)
+      console.log(Object.keys(vm))
     } else {
       vm._renderProxy = vm
     }

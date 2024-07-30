@@ -17,6 +17,7 @@ import { patch } from './patch'
 import platformDirectives from './directives/index'
 import platformComponents from './components/index'
 import type { Component } from 'types/component'
+console.log('platforms/web/runtime/index.ts')
 
 // install platform specific utils
 Vue.config.mustUseProp = mustUseProp

@@ -1,3 +1,4 @@
+
 import config from 'core/config'
 import { warn, cached } from 'core/util/index'
 import { mark, measure } from 'core/util/perf'
@@ -11,7 +12,7 @@ import {
 } from './util/compat'
 import type { Component } from 'types/component'
 import type { GlobalAPI } from 'types/global-api'
-
+console.log('platforms/web/runtime-with-compiler.ts')
 const idToTemplate = cached(id => {
   const el = query(id)
   return el && el.innerHTML
