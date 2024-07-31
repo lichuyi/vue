@@ -53,6 +53,30 @@ var app = new Vue({
       deep: true
     }
   },
+  beforeCreate () {
+    console.log('beforeCreate')
+  },
+  created() {
+    console.log('created')
+  },
+  beforeMount() {
+    console.log('beforeMount')
+  },
+  mounted() {
+    console.log('mounted')
+  },
+  beforeUpdate(){
+    console.log('beforeUpdate')
+  },
+  updated() {
+    console.log('updated')
+  },
+  beforeDestroy () {
+    console.log('beforeUnmount')
+  },
+  destroyed () {
+    console.log('destroyed')
+  },
 
   // computed properties
   // https://v2.vuejs.org/v2/guide/computed.html

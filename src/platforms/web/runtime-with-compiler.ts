@@ -11,7 +11,7 @@ import {
 } from './util/compat'
 import type { Component } from 'types/component'
 import type { GlobalAPI } from 'types/global-api'
-
+console.log('platforms/web/runtime-with-compiler.ts')
 const idToTemplate = cached(id => {
   const el = query(id)
   return el && el.innerHTML
@@ -22,6 +22,7 @@ Vue.prototype.$mount = function (
   el?: string | Element,
   hydrating?: boolean
 ): Component {
+  console.log('platforms/web/runtime-with-compiler.ts', 'Vue.prototype.$mount')
   el = el && query(el)
 
   /* istanbul ignore if */

@@ -156,6 +156,7 @@ export function defineReactive(
     enumerable: true,
     configurable: true,
     get: function reactiveGetter() {
+      console.log('getter-key',key)
       const value = getter ? getter.call(obj) : val
       if (Dep.target) {
         if (__DEV__) {
@@ -178,6 +179,7 @@ export function defineReactive(
     },
     set: function reactiveSetter(newVal) {
       const value = getter ? getter.call(obj) : val
+      console.log('setter-key',value)
       if (!hasChanged(value, newVal)) {
         return
       }

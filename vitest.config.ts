@@ -14,7 +14,8 @@ export default defineConfig({
       web: resolve('src/platforms/web'),
       v3: resolve('src/v3'),
       vue: resolve('src/platforms/web/entry-runtime-with-compiler'),
-      types: resolve('src/types')
+      types: resolve('src/types'),
+      src: resolve('src')
     }
   },
   define: {

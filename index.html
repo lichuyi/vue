@@ -6,7 +6,11 @@
     <title>Document</title>
   </head>
   <body>
-    <div id="app">{{msg}}</div>
+    <div id="app">
+      {{msg}}
+      <br />
+      {{arr}}
+    </div>
     <script src="./dist/vue.js"></script>
 
     <script>
@@ -15,10 +19,37 @@
         el: '#app',
         data() {
           return {
-            msg: 'msg -- value'
+            msg: 'msg -- value',
+            arr: [1, 2, 3]
           }
+        },
+        beforeCreate() {
+          console.log('beforeCreate')
+        },
+        created() {
+          console.log('created')
+        },
+        beforeMount() {
+          console.log('beforeMount')
+        },
+        mounted() {
+          console.log('mounted')
+        },
+        beforeUpdate() {
+          console.log('beforeUpdate')
+        },
+        updated() {
+          console.log('updated')
+        },
+        beforeDestroy() {
+          console.log('beforeUnmount')
+        },
+        destroyed() {
+          console.log('destroyed')
         }
       })
+      window.app = app
+      console.log('app', app)
     </script>
   </body>
 </html>

@@ -50,6 +50,7 @@ export function proxy(target: Object, sourceKey: string, key: string) {
 }
 
 export function initState(vm: Component) {
+  console.log('initState')
   const opts = vm.$options
   if (opts.props) initProps(vm, opts.props)
 

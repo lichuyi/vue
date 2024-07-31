@@ -10,12 +10,16 @@ import { extend, mergeOptions, formatComponentName } from '../util/index'
 import type { Component } from 'types/component'
 import type { InternalComponentOptions } from 'types/options'
 import { EffectScope } from 'v3/reactivity/effectScope'
+import debugMethods from 'src/debugMethods'
 
 let uid = 0
+const debugkeys = debugMethods.generatedDebugkeys()
 
 export function initMixin(Vue: typeof Component) {
   Vue.prototype._init = function (options?: Record<string, any>) {
+    console.log('Vue.prototype._init')
     const vm: Component = this
+    debugkeys(vm)
     // a uid
     vm._uid = uid++
 
@@ -38,6 +42,7 @@ export function initMixin(Vue: typeof Component) {
     // render of a parent component
     vm._scope.parent = undefined
     vm._scope._vm = true
+    debugkeys(vm)
     // merge options
     if (options && options._isComponent) {
       // optimize internal component instantiation
@@ -50,22 +55,30 @@ export function initMixin(Vue: typeof Component) {
         options || {},
         vm
       )
+      debugkeys(vm)
     }
     /* istanbul ignore else */
     if (__DEV__) {
       initProxy(vm)
+      debugkeys(vm)
     } else {
       vm._renderProxy = vm
     }
     // expose real self
     vm._self = vm
     initLifecycle(vm)
+    debugkeys(vm, 'initLifecycle')
     initEvents(vm)
+    debugkeys(vm, 'initEvents')
     initRender(vm)
+    debugkeys(vm, 'initRender')
     callHook(vm, 'beforeCreate', undefined, false /* setContext */)
     initInjections(vm) // resolve injections before data/props
+    debugkeys(vm, 'initInjections')
     initState(vm)
+    debugkeys(vm, 'initState')
     initProvide(vm) // resolve provide after data/props
+    debugkeys(vm, 'initProvide')
     callHook(vm, 'created')
 
     /* istanbul ignore if */
@@ -76,6 +89,7 @@ export function initMixin(Vue: typeof Component) {
     }
 
     if (vm.$options.el) {
+      console.log('vm.$mount')
       vm.$mount(vm.$options.el)
     }
   }
